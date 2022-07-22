@@ -1,4 +1,4 @@
-package amd.caveofprogramming.section4.whileloops;
+package amd.caveofprogramming.section4.whileloops32;
 
 public class WhileLoops {
 
