@@ -1,4 +1,4 @@
-package amd.caveofprogramming.mwl;
+package amd.caveofprogramming.section4.mwl38;
 
 public class MoreWhileLoops {
 	public static void main(String[] args) {

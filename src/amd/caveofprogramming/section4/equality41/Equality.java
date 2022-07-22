@@ -1,4 +1,4 @@
-package amd.caveofprogramming.equality;
+package amd.caveofprogramming.section4.equality41;
 
 public class Equality {
 

@@ -1,8 +1,8 @@
-package amd.caveofprogramming.usingif;
+package amd.caveofprogramming.section4.ifelse44;
 
 import java.util.Scanner;
 
-public class UsingIf {
+public class IfElse {
 
 	public static void main(String[] args) {
 
@@ -20,16 +20,10 @@ public class UsingIf {
 
 		if (temperatureCelsius < 21) {
 			System.out.println("Too cold");
-		}
-
-		if (temperatureCelsius >= 21 && temperatureCelsius <= 31) {
+		} else {
 			System.out.println("Warm enough");
 		}
 
-		if (temperatureCelsius > 31) {
-			System.out.println("Too hot");
-		}
-		
 	}
 
 }

@@ -1,9 +1,8 @@
-package amd.caveofprogramming.ifelseif;
+package amd.caveofprogramming.section4.moreifelseif46;
 
 import java.util.Scanner;
 
-public class IfElseIf {
-
+public class MoreIfElseIf {
 	public static void main(String[] args) {
 
 		Scanner scanner = new Scanner(System.in);
@@ -27,5 +26,4 @@ public class IfElseIf {
 		scanner.close();
 
 	}
-
 }

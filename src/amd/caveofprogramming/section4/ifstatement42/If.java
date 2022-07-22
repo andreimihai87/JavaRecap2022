@@ -1,4 +1,4 @@
-package amd.caveofprogramming.ifstatement;
+package amd.caveofprogramming.section4.ifstatement42;
 
 public class If {
 

@@ -1,4 +1,4 @@
-package amd.caveofprogramming.bool;
+package amd.caveofprogramming.section4.bool40;
 
 public class Boolean {
 
