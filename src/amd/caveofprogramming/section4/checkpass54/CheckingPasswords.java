@@ -1,4 +1,4 @@
-package amd.caveofprogramming.section4.checkPass54;
+package amd.caveofprogramming.section4.checkpass54;
 
 import java.util.Scanner;
 
