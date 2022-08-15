@@ -22,8 +22,11 @@ public class PrimitiveArraysExerciseSolution {
 		}
 
 		System.out.print("Numbers are: ");
-		for (int i = 0; i < numbers.length; i++) {
-			System.out.print(numbers[i] + " ");
+//		for (int i = 0; i < numbers.length; i++) {
+//			System.out.print(numbers[i] + " ");
+//		}
+		for (int number : numbers) {
+			System.out.print(number + " ");
 		}
 		System.out.println("\nThe sum of the numbers is: " + sumOfNumbers);
 
