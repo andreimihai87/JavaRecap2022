@@ -1,4 +1,4 @@
-package amd.caveofprogramming.section7;
+package amd.caveofprogramming.section7.hangman;
 
 public class Main {
 
