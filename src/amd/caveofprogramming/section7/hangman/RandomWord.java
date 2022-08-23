@@ -16,19 +16,16 @@ public class RandomWord {
 	}
 
 	public String toString() {
-
-		String text = "";
-		
+		StringBuilder sb1 = new StringBuilder();
 		for (int i = 0; i < caracters.length; i++) {
 			if (caracters[i] == '\u0000') {
-				text += "_";
+				sb1.append("_");
 			} else {
-				text += caracters[i];
+				sb1.append(caracters[i]);
 			}
-			text += " ";
+			sb1.append(" ");
 		}
-
-		return text;
+		return sb1.toString();
 	}
 
 }
