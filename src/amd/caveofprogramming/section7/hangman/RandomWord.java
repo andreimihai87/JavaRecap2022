@@ -33,4 +33,13 @@ public class RandomWord {
 		}
 	}
 
+	public boolean isComplete() {
+		for (char c : caracters) {
+			if (c == '\u0000') {
+				return false;
+			}
+		}
+		return true;
+	}
+
 }

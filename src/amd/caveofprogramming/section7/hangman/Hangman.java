@@ -12,26 +12,31 @@ public class Hangman {
 		do {
 			displayWord();
 			getUserInput();
-//			checkUserInput();
+			checkUserInput();
 		} while (isRunning);
 	}
-	
+
 	private void displayWord() {
 		System.out.println(word);
 	}
-	
+
 	private void getUserInput() {
 		// ask the user to enter a character; get the character as a string
 		System.out.print("Enter your guess:");
 		String guess = myScanner.nextLine();
 		word.addGuess(guess.charAt(0));
 	}
-	
+
 	private void checkUserInput() {
+		if (word.isComplete()) {
+			System.out.println("You have Won!");
+			System.out.println("The word was: " + word);
+			isRunning = false;
+		}
 	}
 
 	public void close() {
-		myScanner.close();		
+		myScanner.close();
 	}
 
 }
