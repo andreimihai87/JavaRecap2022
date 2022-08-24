@@ -24,4 +24,13 @@ public class RandomWord {
 		return sb1.toString();
 	}
 
+	public void addGuess(char c) {
+		// fill in c wherever is found in the character array of chosenWord
+		for (int i = 0; i < chosenWord.length(); i++) {
+			if (chosenWord.charAt(i) == c) {
+				caracters[i] = c;
+			}
+		}
+	}
+
 }
