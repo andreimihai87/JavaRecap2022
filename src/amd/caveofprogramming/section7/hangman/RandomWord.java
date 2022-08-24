@@ -17,12 +17,8 @@ public class RandomWord {
 
 	public String toString() {
 		StringBuilder sb1 = new StringBuilder();
-		for (int i = 0; i < caracters.length; i++) {
-			if (caracters[i] == '\u0000') {
-				sb1.append("_");
-			} else {
-				sb1.append(caracters[i]);
-			}
+		for (char c : caracters) {
+			sb1.append(c == '\u0000' ? "_" : c);
 			sb1.append(" ");
 		}
 		return sb1.toString();
