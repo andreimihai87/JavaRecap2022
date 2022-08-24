@@ -14,7 +14,6 @@ public class Hangman {
 			getUserInput();
 //			checkUserInput();
 		} while (isRunning);
-		myScanner.close();
 	}
 	
 	private void displayWord() {
@@ -29,6 +28,10 @@ public class Hangman {
 	}
 	
 	private void checkUserInput() {
+	}
+
+	public void close() {
+		myScanner.close();		
 	}
 
 }

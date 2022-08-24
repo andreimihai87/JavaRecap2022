@@ -6,6 +6,7 @@ public class Main {
 
 		Hangman gameHangman = new Hangman();
 		gameHangman.run();
+		gameHangman.close();
 		
 	}
 
