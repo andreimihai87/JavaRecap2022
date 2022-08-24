@@ -8,6 +8,7 @@ public class RandomWord {
 	private String chosenWord;
 	private Random random = new Random();
 	private char[] caracters;
+	private boolean isCorrectGuess;
 
 	public RandomWord() {
 		int wordIndex = random.nextInt(words.length);
@@ -25,12 +26,20 @@ public class RandomWord {
 	}
 
 	public void addGuess(char c) {
+		isCorrectGuess = false;
 		// fill in c wherever is found in the character array of chosenWord
 		for (int i = 0; i < chosenWord.length(); i++) {
 			if (chosenWord.charAt(i) == c) {
+				if (caracters[i] == '\u0000') {
+					isCorrectGuess = true;
+				}
 				caracters[i] = c;
 			}
 		}
+	}
+	
+	public boolean isCorrectGuess() {
+		return isCorrectGuess;
 	}
 
 	public boolean isComplete() {
@@ -40,6 +49,10 @@ public class RandomWord {
 			}
 		}
 		return true;
+	}
+	
+	public String getChosenWord() {
+		return chosenWord;
 	}
 
 }

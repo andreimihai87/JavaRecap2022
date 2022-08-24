@@ -6,6 +6,9 @@ public class Hangman {
 
 	private boolean isRunning = true;
 	private RandomWord word = new RandomWord();
+	private int guesses = 0;
+	private final int MAX_GUESSES = 5;
+	private char lastGuess;
 	Scanner myScanner = new Scanner(System.in);
 
 	public void run() {
@@ -17,6 +20,7 @@ public class Hangman {
 	}
 
 	private void displayWord() {
+		System.out.println("You have " + (MAX_GUESSES - guesses) + " guesses left.");
 		System.out.println(word);
 	}
 
@@ -24,13 +28,22 @@ public class Hangman {
 		// ask the user to enter a character; get the character as a string
 		System.out.print("Enter your guess:");
 		String guess = myScanner.nextLine();
-		word.addGuess(guess.charAt(0));
+		lastGuess = guess.charAt(0);
 	}
 
 	private void checkUserInput() {
+		word.addGuess(lastGuess);
+		if (!word.isCorrectGuess()) {
+			guesses++;
+		}
+		if (guesses >= MAX_GUESSES) {
+			System.out.println("You have Lost!");
+			System.out.println("The word was: " + word.getChosenWord());
+			isRunning = false;
+		}
 		if (word.isComplete()) {
 			System.out.println("You have Won!");
-			System.out.println("The word was: " + word);
+			System.out.println("The word was: " + word.getChosenWord());
 			isRunning = false;
 		}
 	}
