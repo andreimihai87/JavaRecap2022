@@ -21,6 +21,8 @@ public class StaticVariables {
 		
 		System.out.println(Cat.getCount());
 		
+		System.out.println(cat1.getId() + ", "+ cat2.getId());
+		
 	}
 
 }
