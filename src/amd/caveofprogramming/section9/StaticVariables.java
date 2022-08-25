@@ -13,6 +13,14 @@ public class StaticVariables {
 		System.out.println(Cat.FOOD);
 		System.out.println(Math.PI);
 		
+		System.out.println(Cat.getCount());
+		System.out.println(Cat.getCount());
+		
+		Cat cat3 = new Cat("Minty");
+		System.out.println(cat3);
+		
+		System.out.println(Cat.getCount());
+		
 	}
 
 }
