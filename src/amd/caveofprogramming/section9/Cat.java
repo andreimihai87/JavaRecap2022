@@ -6,6 +6,11 @@ public class Cat {
 	public static final String FOOD = "Cat food";
 	private static int count = 0;
 	private int id = 0;
+	
+	// static initialization block - runs once at the beginning
+	static {
+		System.out.println("Hello CATS!");
+	}
 
 	public Cat(String name) {
 		this.name = name;
