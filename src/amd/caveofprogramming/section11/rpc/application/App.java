@@ -1,4 +1,4 @@
-package amd.caveofprogramming.section11.rpc;
+package amd.caveofprogramming.section11.rpc.application;
 
 import amd.caveofprogramming.section11.rpc.game.Game;
 
