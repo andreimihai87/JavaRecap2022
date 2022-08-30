@@ -1,6 +1,6 @@
 package amd.caveofprogramming.section11.game;
 
-public class GameItem {
+public class GameItem implements Comparable<GameItem> {
 	
 	private int id;
 	private String name;
@@ -31,6 +31,7 @@ public class GameItem {
 	}
 	
 	/** Compare to GameItems */
+	@Override
 	public int compareTo(GameItem otherItem) {
 		return comparison[id][otherItem.id];
 	}
