@@ -11,9 +11,16 @@ public class Game {
 		System.out.println("Game is running...");
 		
 		Random randomNr = new Random();
-		int index = randomNr.nextInt(gameItems.length);
+		int index1 = randomNr.nextInt(gameItems.length);
+		int index2 = randomNr.nextInt(gameItems.length);
 		
-		System.out.println(gameItems[index]);
+		GameItem game1 = gameItems[index1];
+		GameItem game2 = gameItems[index2];
+		
+		System.out.println(game1);
+		System.out.println(game2);
+		
+		System.out.println(game1.compareTo(game2));
 		
 	}
 
