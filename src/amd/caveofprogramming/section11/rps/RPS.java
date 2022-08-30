@@ -1,4 +1,4 @@
-package amd.caveofprogramming.section11.rpc;
+package amd.caveofprogramming.section11.rps;
 
 import amd.caveofprogramming.section11.game.Game;
 
@@ -7,7 +7,7 @@ import amd.caveofprogramming.section11.game.Game;
  * @author andrew
  *
  */
-public class App {
+public class RPS {
 
 	public static void main(String[] args) {
 
