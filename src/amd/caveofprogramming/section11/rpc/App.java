@@ -1,6 +1,6 @@
-package amd.caveofprogramming.section11.rpc.application;
+package amd.caveofprogramming.section11.rpc;
 
-import amd.caveofprogramming.section11.rpc.game.Game;
+import amd.caveofprogramming.section11.game.Game;
 
 /**
  * Rock Paper Scissors

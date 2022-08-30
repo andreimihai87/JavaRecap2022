@@ -1,4 +1,4 @@
-package amd.caveofprogramming.section11.rpc.game;
+package amd.caveofprogramming.section11.game;
 
 public class GameItem {
 	
