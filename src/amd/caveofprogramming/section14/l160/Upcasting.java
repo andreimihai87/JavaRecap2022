@@ -1,7 +1,5 @@
 package amd.caveofprogramming.section14.l160;
 
-import amd.caveofprogramming.section14.l160.animals.Cat;
-
 public class Upcasting {
 
 	public static void main(String[] args) {
@@ -18,12 +16,6 @@ public class Upcasting {
 		System.out.println(a4);
 		
 		System.out.println();
-		
-		// can't do this:
-		// System.out.println(a1.getName());
-		System.out.println(a2.getName());
-		System.out.println(a3.getName());
-		System.out.println(a4.getName());
 		
 	}
 

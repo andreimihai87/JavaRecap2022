@@ -1,10 +1,10 @@
 package amd.caveofprogramming.section14.l160;
 
-public class Animal {
+public class Cat extends Animal {
 	
 	@Override
 	public String toString() {
-		return "animal";
+		return "cat";
 	}
 
 }
