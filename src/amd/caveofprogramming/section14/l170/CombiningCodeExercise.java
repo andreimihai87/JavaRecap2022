@@ -9,7 +9,7 @@ public class CombiningCodeExercise {
 
 	public static void main(String[] args) {
 
-		ScheduledExecutorService executor = Executors.newScheduledThreadPool(0);
+		ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
 		executor.scheduleWithFixedDelay(new Status(), 0, 1, TimeUnit.SECONDS);
 		
 		Timer timer = new Timer();
