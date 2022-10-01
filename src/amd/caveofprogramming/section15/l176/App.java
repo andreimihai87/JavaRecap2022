@@ -2,7 +2,7 @@ package amd.caveofprogramming.section15.l176;
 
 import javax.swing.SwingUtilities;
 
-public class ToolbarComponent {
+public class App {
 
 	public static void main(String[] args) {
 
