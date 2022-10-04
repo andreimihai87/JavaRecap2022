@@ -1,4 +1,4 @@
-package amd.caveofprogramming.section18.l198;
+package amd.caveofprogramming.section18.l198l199;
 
 import java.util.Random;
 import java.util.Scanner;
