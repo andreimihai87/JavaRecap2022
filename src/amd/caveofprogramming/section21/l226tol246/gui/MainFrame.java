@@ -10,7 +10,7 @@ public class MainFrame extends JFrame {
 	public MainFrame() {
 		super("Game Of Life");
 		
-		MainPanel mainPanel = new MainPanel();
+		GamePanel mainPanel = new GamePanel();
 		
 		setLayout(new BorderLayout());
 		add(mainPanel, BorderLayout.CENTER);
