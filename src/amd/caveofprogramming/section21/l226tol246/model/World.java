@@ -1,5 +1,7 @@
 package amd.caveofprogramming.section21.l226tol246.model;
 
+import java.util.Random;
+
 public class World {
 
 	private int rows;
@@ -23,9 +25,9 @@ public class World {
 	}
 	
 	public void displayGrid() {
-		for(int i = 0; i < rows; i++) {
-			for(int j = 0; j < columns; j++) {
-				System.out.printf("[%d][%d]=%5s", i, j , getCell(i, j));
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < columns; j++) {
+				System.out.printf("[%d][%d]=%5s", i, j, getCell(i, j));
 			}
 			System.out.println();
 		}
@@ -38,6 +40,15 @@ public class World {
 
 	public int getColumns() {
 		return columns;
+	}
+
+	public void randomize() {
+		Random random = new Random();
+		for (int i = 0; i < rows * columns / 10; i++) {
+			int row = random.nextInt(rows);
+			int col = random.nextInt(columns);
+			setCell(row, col, true);
+		}
 	}
 
 }

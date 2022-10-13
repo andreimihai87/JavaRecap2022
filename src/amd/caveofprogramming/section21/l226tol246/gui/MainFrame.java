@@ -13,10 +13,10 @@ public class MainFrame extends JFrame {
 	public MainFrame() {
 		super("Game Of Life");
 		
-		GamePanel mainPanel = new GamePanel();
+		GamePanel gamePanel = new GamePanel();
 		
 		setLayout(new BorderLayout());
-		add(mainPanel, BorderLayout.CENTER);
+		add(gamePanel, BorderLayout.CENTER);
 		
 		addKeyListener(new KeyAdapter() {
 			@Override
@@ -27,7 +27,7 @@ public class MainFrame extends JFrame {
 					System.out.println("back space");
 					break;
 				case 10:
-					System.out.println("enter");
+					gamePanel.randomize();
 					break;
 				case 32:
 					System.out.println("space");
