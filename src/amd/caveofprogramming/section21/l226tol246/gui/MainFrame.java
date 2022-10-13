@@ -30,7 +30,7 @@ public class MainFrame extends JFrame {
 					gamePanel.randomize();
 					break;
 				case 32:
-					System.out.println("space");
+					gamePanel.next();
 					break;
 				default:
 					break;

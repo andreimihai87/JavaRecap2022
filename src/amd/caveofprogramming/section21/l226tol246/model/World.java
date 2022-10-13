@@ -58,4 +58,13 @@ public class World {
 		}
 	}
 
+	public void next() {
+		for (int row = 0; row < rows; row++) {
+			for (int col = 0; col < columns; col++) {
+				System.out.printf("(%d,%d)", row, col);
+			}
+			System.out.println();
+		}
+	}
+
 }
