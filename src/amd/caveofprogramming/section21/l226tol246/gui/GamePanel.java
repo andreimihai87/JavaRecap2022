@@ -3,6 +3,8 @@ package amd.caveofprogramming.section21.l226tol246.gui;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
@@ -21,7 +23,28 @@ public class GamePanel extends JPanel {
 	private int leftRightMargin;
 	private int topBottomMargin;
 
+	private World world;
+
 	public GamePanel() {
+
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				int row = (e.getY() - topBottomMargin) / CELL_SIZE;
+				int col = (e.getX() - leftRightMargin) / CELL_SIZE;
+
+				if (row >= world.getRows() || col >= world.getColumns()) {
+					return;
+				}
+
+				boolean status = world.getCell(row, col);
+				world.setCell(row, col, !status);
+
+				repaint();
+			}
+		});
+
 	}
 
 	@Override
@@ -38,17 +61,14 @@ public class GamePanel extends JPanel {
 		int columns = (width - 2 * leftRightMargin) / CELL_SIZE;
 		int rows = (height - 2 * topBottomMargin) / CELL_SIZE;
 
-		World world = new World(rows, columns);
+		if (world == null) {
+			world = new World(rows, columns);
+		}
 
 		g2.setColor(backgroundColor);
 		g2.fillRect(0, 0, width, height);
 
 		drawGrid(g2, width, height);
-
-		world.setCell(0, 0, true);
-		world.setCell(2, 4, true);
-		world.setCell(3, 5, true);
-		world.setCell(rows - 1, columns - 1, true);
 
 		for (int row = 0; row < rows; row++) {
 			for (int col = 0; col < columns; col++) {

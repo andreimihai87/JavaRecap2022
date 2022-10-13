@@ -32,4 +32,12 @@ public class World {
 		System.out.println();
 	}
 
+	public int getRows() {
+		return rows;
+	}
+
+	public int getColumns() {
+		return columns;
+	}
+
 }
