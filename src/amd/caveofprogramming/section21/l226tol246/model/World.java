@@ -14,12 +14,22 @@ public class World {
 		grid = new boolean[rows][columns];
 	}
 
-	public boolean getCells(int row, int col) {
+	public boolean getCell(int row, int col) {
 		return grid[row][col];
 	}
 
-	public void setCells(int row, int col, boolean status) {
+	public void setCell(int row, int col, boolean status) {
 		grid[row][col] = status;
+	}
+	
+	public void displayGrid() {
+		for(int i = 0; i < rows; i++) {
+			for(int j = 0; j < columns; j++) {
+				System.out.printf("[%d][%d]=%5s", i, j , getCell(i, j));
+			}
+			System.out.println();
+		}
+		System.out.println();
 	}
 
 }

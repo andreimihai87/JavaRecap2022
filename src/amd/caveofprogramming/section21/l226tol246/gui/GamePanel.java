@@ -6,6 +6,8 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
+import amd.caveofprogramming.section21.l226tol246.model.World;
+
 public class GamePanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -33,17 +35,27 @@ public class GamePanel extends JPanel {
 		leftRightMargin = ((width % CELL_SIZE) + CELL_SIZE) / 2;
 		topBottomMargin = ((height % CELL_SIZE) + CELL_SIZE) / 2;
 
+		int columns = (width - 2 * leftRightMargin) / CELL_SIZE;
+		int rows = (height - 2 * topBottomMargin) / CELL_SIZE;
+
+		World world = new World(rows, columns);
+
 		g2.setColor(backgroundColor);
 		g2.fillRect(0, 0, width, height);
 
-//		g2.setColor(foregroundColor);
-//		g2.fillRect(leftRightMargin, topBottomMargin, width - 2 * leftRightMargin, height - 2 * topBottomMargin);
-
 		drawGrid(g2, width, height);
 
-		fillCell(g2, 2, 4, true);
-		fillCell(g2, 2, 4, false);
-		fillCell(g2, 3, 5, true);
+		world.setCell(0, 0, true);
+		world.setCell(2, 4, true);
+		world.setCell(3, 5, true);
+		world.setCell(rows - 1, columns - 1, true);
+
+		for (int row = 0; row < rows; row++) {
+			for (int col = 0; col < columns; col++) {
+				boolean status = world.getCell(row, col);
+				fillCell(g2, row, col, status);
+			}
+		}
 
 	}
 
@@ -65,7 +77,6 @@ public class GamePanel extends JPanel {
 
 		g2.setColor(gridColor);
 
-		// My implementation
 		int maxWidth = leftRightMargin;
 		while (maxWidth <= width - leftRightMargin) {
 			g2.drawLine(maxWidth, topBottomMargin, maxWidth, height - topBottomMargin - 1);
@@ -77,15 +88,6 @@ public class GamePanel extends JPanel {
 			g2.drawLine(leftRightMargin, maxHeight, width - leftRightMargin, maxHeight);
 			maxHeight += CELL_SIZE;
 		}
-
-		// COV implementation
-//		for(int x = leftRightMargin; x <= width - leftRightMargin; x += CELL_SIZE) {
-//			g2.drawLine(x, topBottomMargin, x, height - topBottomMargin);
-//		}
-//		
-//		for(int y = topBottomMargin; y <= height - topBottomMargin; y += CELL_SIZE) {
-//			g2.drawLine(leftRightMargin, y, width - leftRightMargin, y);
-//		}
 
 	}
 
