@@ -24,7 +24,7 @@ public class MainFrame extends JFrame {
 				int keyCode = e.getKeyCode();
 				switch (keyCode) {
 				case 8:
-					System.out.println("back space");
+					gamePanel.clear();
 					break;
 				case 10:
 					gamePanel.randomize();

@@ -1,5 +1,6 @@
 package amd.caveofprogramming.section21.l226tol246.model;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class World {
@@ -48,6 +49,12 @@ public class World {
 			int row = random.nextInt(rows);
 			int col = random.nextInt(columns);
 			setCell(row, col, true);
+		}
+	}
+
+	public void clear() {
+		for (int row = 0; row < rows; row++) {
+			Arrays.fill(grid[row], false);
 		}
 	}
 
