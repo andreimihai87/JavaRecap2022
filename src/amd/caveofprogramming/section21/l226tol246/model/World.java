@@ -68,13 +68,15 @@ public class World {
 				 * if neighbors == 3 activate cell; if neighbors == 2 let the cell like it is
 				 * 
 				 */
+				boolean status = false;
 				if (countingNeighbours(row, col) < 2 || countingNeighbours(row, col) > 3) {
-					gridBuffer[row][col] = false;
+					status = false;
 				} else if (countingNeighbours(row, col) == 3) {
-					gridBuffer[row][col] = true;
+					status = true;
 				} else if (countingNeighbours(row, col) == 2) {
-					gridBuffer[row][col] = getCell(row, col);
+					status = getCell(row, col);
 				}
+				gridBuffer[row][col] = status;
 			}
 		}
 		copyTheGrid(gridBuffer, grid);
