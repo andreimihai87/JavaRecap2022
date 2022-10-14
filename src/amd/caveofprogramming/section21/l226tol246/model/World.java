@@ -61,10 +61,41 @@ public class World {
 	public void next() {
 		for (int row = 0; row < rows; row++) {
 			for (int col = 0; col < columns; col++) {
-				System.out.printf("(%d,%d)", row, col);
+				System.out.printf("(%d,%d)=%d ", row, col, countingNeighbours(row, col));
 			}
 			System.out.println();
 		}
+	}
+
+	private int countingNeighbours(int row, int col) {
+		int neighbours = 0;
+		int startA = -1;
+		int stopA = 2;
+		int startB = -1;
+		int stopB = 2;
+		if (row == 0) {
+			startA = 0;
+		}
+		if (col == 0) {
+			startB = 0;
+		}
+		if (row == rows - 1) {
+			stopA = 1;
+		}
+		if (col == columns - 1) {
+			stopB = 1;
+		}
+		for (int a = startA; a < stopA; a++) {
+			for (int b = startB; b < stopB; b++) {
+				if (a == 0 && b == 0) {
+					continue;
+				}
+				if (getCell(row + a, col + b)) {
+					neighbours++;
+				}
+			}
+		}
+		return neighbours;
 	}
 
 }
