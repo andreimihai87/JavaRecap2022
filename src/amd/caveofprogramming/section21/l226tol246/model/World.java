@@ -9,12 +9,14 @@ public class World {
 	private int columns;
 
 	private boolean[][] grid;
+	private boolean[][] gridBuffer;
 
 	public World(int rows, int columns) {
 		this.rows = rows;
 		this.columns = columns;
 
 		grid = new boolean[rows][columns];
+		gridBuffer = new boolean[rows][columns];
 	}
 
 	public boolean getCell(int row, int col) {
@@ -24,11 +26,11 @@ public class World {
 	public void setCell(int row, int col, boolean status) {
 		grid[row][col] = status;
 	}
-	
-	public void displayGrid() {
+
+	public void displayGrid(boolean[][] grid) {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < columns; j++) {
-				System.out.printf("[%d][%d]=%5s", i, j, getCell(i, j));
+				System.out.printf("[%d][%d]=%5s", i, j, grid[i][j]);
 			}
 			System.out.println();
 		}
@@ -61,9 +63,28 @@ public class World {
 	public void next() {
 		for (int row = 0; row < rows; row++) {
 			for (int col = 0; col < columns; col++) {
-				System.out.printf("(%d,%d)=%d ", row, col, countingNeighbours(row, col));
+				/*
+				 * if neighbors < 2 - deactivate cell; if neighbors > 3 deactivate cell;
+				 * if neighbors == 3 activate cell; if neighbors == 2 let the cell like it is
+				 * 
+				 */
+				if (countingNeighbours(row, col) < 2 || countingNeighbours(row, col) > 3) {
+					gridBuffer[row][col] = false;
+				} else if (countingNeighbours(row, col) == 3) {
+					gridBuffer[row][col] = true;
+				} else if (countingNeighbours(row, col) == 2) {
+					gridBuffer[row][col] = getCell(row, col);
+				}
 			}
-			System.out.println();
+		}
+		copyTheGrid(gridBuffer, grid);
+	}
+
+	private void copyTheGrid(boolean[][] grid1, boolean[][] grid2) {
+		for (int row = 0; row < rows; row++) {
+			for (int col = 0; col < columns; col++) {
+				grid2[row][col] = grid1[row][col];
+			}
 		}
 	}
 
