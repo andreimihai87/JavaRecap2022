@@ -9,42 +9,48 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 
 public class MainFrame extends JFrame {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	public MainFrame() {
 		super("Game Of Life");
-		
+
 		MenuItem openItem = new MenuItem("Open");
 		MenuItem saveItem = new MenuItem("Save");
-		
+
 		Menu fileMenu = new Menu("File");
 		fileMenu.add(openItem);
 		fileMenu.add(saveItem);
-		
+
 		MenuBar menuBar = new MenuBar();
 		menuBar.add(fileMenu);
-		
+
 		setMenuBar(menuBar);
-		
+
+		JFileChooser fileChooser = new JFileChooser();
+
 		// with lambda expression
 		openItem.addActionListener((e) -> System.out.println("Open"));
 		// with anonymous class
 		saveItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Save");
+				int optionChoosed = fileChooser.showSaveDialog(MainFrame.this);
+				if (optionChoosed == JFileChooser.APPROVE_OPTION) {
+					System.out.println("Save");
+				}
 			}
 		});
-		
+
 		GamePanel gamePanel = new GamePanel();
-		
+
 		setLayout(new BorderLayout());
 		add(gamePanel, BorderLayout.CENTER);
-		
+
 		addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -68,7 +74,7 @@ public class MainFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(800, 600);
 		setVisible(true);
-		
+
 	}
 
 }
