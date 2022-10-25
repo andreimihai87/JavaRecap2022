@@ -12,6 +12,7 @@ import java.io.File;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MainFrame extends JFrame {
 
@@ -36,18 +37,28 @@ public class MainFrame extends JFrame {
 		GamePanel gamePanel = new GamePanel();
 
 		JFileChooser fileChooser = new JFileChooser();
+		
+		File file = new File(FILE_NAME);
+		fileChooser.setCurrentDirectory(file);
+		fileChooser.setSelectedFile(file);
+		
+		FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("Game of Life Files", "txt");
+		fileChooser.addChoosableFileFilter(fileFilter);
+		fileChooser.setFileFilter(fileFilter);
 
 		// with lambda expression
-		openItem.addActionListener((e) -> System.out.println("Open"));
+		openItem.addActionListener((e) -> {
+			int optionChoosed = fileChooser.showOpenDialog(MainFrame.this);
+			if (optionChoosed == JFileChooser.APPROVE_OPTION) {
+				File selectedFile = fileChooser.getSelectedFile();
+				
+				System.out.println("Opened " + selectedFile);
+			}
+		});
 		// with anonymous class
 		saveItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				File file = new File(FILE_NAME);
-				fileChooser.setCurrentDirectory(file);
-				fileChooser.setSelectedFile(file);
-
 				int optionChoosed = fileChooser.showSaveDialog(MainFrame.this);
 				if (optionChoosed == JFileChooser.APPROVE_OPTION) {
 					File selectedFile = fileChooser.getSelectedFile();

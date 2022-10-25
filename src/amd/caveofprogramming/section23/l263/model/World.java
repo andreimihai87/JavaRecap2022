@@ -8,8 +8,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Random;
 
-import jdk.jfr.MemoryAddress;
-
 public class World {
 
 	private int rows;
