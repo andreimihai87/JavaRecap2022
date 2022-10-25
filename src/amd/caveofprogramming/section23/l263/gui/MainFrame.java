@@ -52,6 +52,8 @@ public class MainFrame extends JFrame {
 			if (optionChoosed == JFileChooser.APPROVE_OPTION) {
 				File selectedFile = fileChooser.getSelectedFile();
 				
+				gamePanel.loadGrid(selectedFile);
+				
 				System.out.println("Opened " + selectedFile);
 			}
 		});

@@ -17,7 +17,7 @@ public class GamePanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final int CELL_SIZE = 50;
+	private static final int CELL_SIZE = 20;
 
 	private static final Color backgroundColor = Color.BLACK;
 	private static final Color foregroundColor = Color.GREEN;
@@ -133,6 +133,11 @@ public class GamePanel extends JPanel {
 
 	public void saveGrid(File selectedFile) {
 		world.saveGrid(selectedFile);
+	}
+
+	public void loadGrid(File selectedFile) {
+		world.loadGrid(selectedFile);
+		repaint();
 	}
 
 }

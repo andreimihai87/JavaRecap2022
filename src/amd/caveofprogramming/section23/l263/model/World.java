@@ -1,7 +1,9 @@
 package amd.caveofprogramming.section23.l263.model;
 
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -138,6 +140,29 @@ public class World {
 					dos.writeBoolean(col);
 				}
 			}
+		} catch (FileNotFoundException e1) {
+			System.out.println("Cannot open file " + selectedFile);
+		} catch (IOException e1) {
+			System.out.println("Cannot write file " + selectedFile);
+		}
+	}
+
+	public void loadGrid(File selectedFile) {
+		try (DataInputStream dis = new DataInputStream(new FileInputStream(selectedFile))) {
+
+			int loadedRows = dis.readInt();
+			int loadedCols = dis.readInt();
+
+			for (int row = 0; row < loadedRows; row++) {
+				for (int col = 0; col < loadedCols; col++) {
+					boolean status = dis.readBoolean();
+					if (row >= rows || col >= columns) {
+						continue;
+					}
+					grid[row][col] = status;
+				}
+			}
+
 		} catch (FileNotFoundException e1) {
 			System.out.println("Cannot open file " + selectedFile);
 		} catch (IOException e1) {
