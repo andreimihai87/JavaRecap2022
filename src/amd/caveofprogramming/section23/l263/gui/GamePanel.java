@@ -6,11 +6,14 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.io.IOException;
+//import java.util.concurrent.Executors;
+//import java.util.concurrent.TimeUnit;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import amd.caveofprogramming.section23.l263.exceptions.MismatchedSizeException;
 import amd.caveofprogramming.section23.l263.model.World;
 
 public class GamePanel extends JPanel {
@@ -132,11 +135,21 @@ public class GamePanel extends JPanel {
 	}
 
 	public void saveGrid(File selectedFile) {
-		world.saveGrid(selectedFile);
+		try {
+			world.saveGrid(selectedFile);
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(GamePanel.this, "Cannot save file!", "Error", JOptionPane.ERROR_MESSAGE);
+		}
 	}
-
+	
 	public void loadGrid(File selectedFile) {
-		world.loadGrid(selectedFile);
+		try {
+			world.loadGrid(selectedFile);
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(GamePanel.this, "Cannot load file!", "Error", JOptionPane.ERROR_MESSAGE);
+		} catch (MismatchedSizeException e) {
+			JOptionPane.showMessageDialog(GamePanel.this, "Loaded grid size is different", "Warning", JOptionPane.WARNING_MESSAGE);
+		}
 		repaint();
 	}
 

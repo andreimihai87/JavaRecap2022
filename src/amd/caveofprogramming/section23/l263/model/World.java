@@ -4,11 +4,12 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Random;
+
+import amd.caveofprogramming.section23.l263.exceptions.MismatchedSizeException;
 
 public class World {
 
@@ -131,7 +132,7 @@ public class World {
 		return neighbours;
 	}
 
-	public void saveGrid(File selectedFile) {
+	public void saveGrid(File selectedFile) throws IOException {
 		try (DataOutputStream dos = new DataOutputStream(new FileOutputStream(selectedFile))) {
 			dos.writeInt(getRows());
 			dos.writeInt(getColumns());
@@ -140,14 +141,10 @@ public class World {
 					dos.writeBoolean(col);
 				}
 			}
-		} catch (FileNotFoundException e1) {
-			System.out.println("Cannot open file " + selectedFile);
-		} catch (IOException e1) {
-			System.out.println("Cannot write file " + selectedFile);
 		}
 	}
 
-	public void loadGrid(File selectedFile) {
+	public void loadGrid(File selectedFile) throws IOException, MismatchedSizeException {
 		try (DataInputStream dis = new DataInputStream(new FileInputStream(selectedFile))) {
 
 			int loadedRows = dis.readInt();
@@ -163,10 +160,10 @@ public class World {
 				}
 			}
 
-		} catch (FileNotFoundException e1) {
-			System.out.println("Cannot open file " + selectedFile);
-		} catch (IOException e1) {
-			System.out.println("Cannot write file " + selectedFile);
+			if (loadedRows != rows || loadedCols != columns) {
+				throw new MismatchedSizeException();
+			}
+
 		}
 	}
 
