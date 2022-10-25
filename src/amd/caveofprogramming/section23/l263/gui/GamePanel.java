@@ -5,18 +5,19 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.JPanel;
 
-import amd.caveofprogramming.section21.l226tol246.model.World;
+import amd.caveofprogramming.section23.l263.model.World;
 
 public class GamePanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final int CELL_SIZE = 10;
+	private static final int CELL_SIZE = 50;
 
 	private static final Color backgroundColor = Color.BLACK;
 	private static final Color foregroundColor = Color.GREEN;
@@ -48,7 +49,7 @@ public class GamePanel extends JPanel {
 		});
 
 		// run automatically
-		Executors.newScheduledThreadPool(1).scheduleAtFixedRate(() -> next(), 1000, 500, TimeUnit.MILLISECONDS);
+//		Executors.newScheduledThreadPool(1).scheduleAtFixedRate(() -> next(), 1000, 500, TimeUnit.MILLISECONDS);
 	}
 
 	@Override
@@ -128,6 +129,10 @@ public class GamePanel extends JPanel {
 	public void next() {
 		world.next();
 		repaint();
+	}
+
+	public void saveGrid(File selectedFile) {
+		world.saveGrid(selectedFile);
 	}
 
 }

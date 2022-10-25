@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
-import java.io.IOException;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -34,6 +33,8 @@ public class MainFrame extends JFrame {
 
 		setMenuBar(menuBar);
 
+		GamePanel gamePanel = new GamePanel();
+
 		JFileChooser fileChooser = new JFileChooser();
 
 		// with lambda expression
@@ -42,20 +43,21 @@ public class MainFrame extends JFrame {
 		saveItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				File file = new File(FILE_NAME);
 				fileChooser.setCurrentDirectory(file);
 				fileChooser.setSelectedFile(file);
-				
+
 				int optionChoosed = fileChooser.showSaveDialog(MainFrame.this);
 				if (optionChoosed == JFileChooser.APPROVE_OPTION) {
 					File selectedFile = fileChooser.getSelectedFile();
-					System.out.println(selectedFile);
+
+					gamePanel.saveGrid(selectedFile);
+
+					System.out.println("Saved " + selectedFile);
 				}
 			}
 		});
-
-		GamePanel gamePanel = new GamePanel();
 
 		setLayout(new BorderLayout());
 		add(gamePanel, BorderLayout.CENTER);

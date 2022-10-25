@@ -1,7 +1,14 @@
 package amd.caveofprogramming.section23.l263.model;
 
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Random;
+
+import jdk.jfr.MemoryAddress;
 
 public class World {
 
@@ -63,11 +70,14 @@ public class World {
 	public void next() {
 		for (int row = 0; row < rows; row++) {
 			for (int col = 0; col < columns; col++) {
+				// @formatter:off
 				/*
-				 * if neighbors < 2 - deactivate cell; if neighbors > 3 deactivate cell;
-				 * if neighbors == 3 activate cell; if neighbors == 2 let the cell like it is
-				 * 
+				 * if neighbors < 2 - deactivate cell;
+				 * if neighbors > 3 deactivate cell;
+				 * if neighbors == 3 activate cell;
+				 * if neighbors == 2 let the cell like it is
 				 */
+				// @formatter:on
 				boolean status = false;
 				if (countingNeighbours(row, col) < 2 || countingNeighbours(row, col) > 3) {
 					status = false;
@@ -119,6 +129,22 @@ public class World {
 			}
 		}
 		return neighbours;
+	}
+
+	public void saveGrid(File selectedFile) {
+		try (DataOutputStream dos = new DataOutputStream(new FileOutputStream(selectedFile))) {
+			dos.writeInt(getRows());
+			dos.writeInt(getColumns());
+			for (boolean[] row : grid) {
+				for (boolean col : row) {
+					dos.writeBoolean(col);
+				}
+			}
+		} catch (FileNotFoundException e1) {
+			System.out.println("Cannot open file " + selectedFile);
+		} catch (IOException e1) {
+			System.out.println("Cannot write file " + selectedFile);
+		}
 	}
 
 }
