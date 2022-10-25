@@ -1,6 +1,11 @@
 package amd.caveofprogramming.section23.l263.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Menu;
+import java.awt.MenuBar;
+import java.awt.MenuItem;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -12,6 +17,28 @@ public class MainFrame extends JFrame {
 
 	public MainFrame() {
 		super("Game Of Life");
+		
+		MenuItem openItem = new MenuItem("Open");
+		MenuItem saveItem = new MenuItem("Save");
+		
+		Menu fileMenu = new Menu("File");
+		fileMenu.add(openItem);
+		fileMenu.add(saveItem);
+		
+		MenuBar menuBar = new MenuBar();
+		menuBar.add(fileMenu);
+		
+		setMenuBar(menuBar);
+		
+		// with lambda expression
+		openItem.addActionListener((e) -> System.out.println("Open"));
+		// with anonymous class
+		saveItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Save");
+			}
+		});
 		
 		GamePanel gamePanel = new GamePanel();
 		
