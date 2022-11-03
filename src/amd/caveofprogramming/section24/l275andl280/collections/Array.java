@@ -43,8 +43,8 @@ public class Array<E> {
 		return sb.toString();
 	}
 	
-	public int getSize() {
-		return array.length;
+	public int size() {
+		return position;
 	}
 
 }

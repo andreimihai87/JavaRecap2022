@@ -21,27 +21,35 @@ public class App {
 
 		System.out.println(myArray);
 		System.out.println();
-		
+
 		Cat cat2 = (Cat) find(myArray, "Tomisor");
 		System.out.println(cat2);
-		
+
 		System.out.println();
-		Array<Mammal> mammals = new Array<>(2);
+		Array<Mammal> mammals = new Array<>(3);
 		mammals.add(new Mammal("dolphin"));
 		mammals.add(new Mammal("sheep"));
 		feedAll(mammals);
-		
+
 		System.out.println();
-		Array<Cat> cats = new Array<>(2);
+		Array<Cat> cats = new Array<>(3);
 		cats.add(new Cat("Tom"));
 		cats.add(new Cat("Tid"));
 		feedAll(cats);
+		
+		System.out.println();
+		addMammal(mammals);
+		feedAll(mammals);
 
+		System.out.println();
+		Array<Creature> creatures = new Array<>(3);
+		creatures.add(new Creature("landCreature"));
+		
 	}
 
 	private static <T> T find(Array<T> array, String text) {
 
-		for (int i = 0; i < array.getSize(); i++) {
+		for (int i = 0; i < array.size(); i++) {
 			T element = array.get(i);
 			if (element.toString().equals(text)) {
 				return element;
@@ -50,13 +58,19 @@ public class App {
 
 		return null;
 	}
-	
-	public static void feedAll(Array<? extends Mammal> mammals) {
-		
-		for(int i = 0; i < mammals.getSize(); i++) {
+
+	private static void feedAll(Array<? extends Mammal> mammals) {
+
+		for (int i = 0; i < mammals.size(); i++) {
 			Mammal mammal = mammals.get(i);
 			mammal.feed();
 		}
+
+	}
+	
+	private static void addMammal(Array<Mammal> mammals) {
+		
+		mammals.add(new Mammal("giraffe"));
 		
 	}
 
