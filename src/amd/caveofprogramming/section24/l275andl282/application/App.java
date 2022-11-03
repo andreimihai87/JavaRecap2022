@@ -42,7 +42,7 @@ public class App {
 		addMammal(mammals);
 		feedAll(mammals);
 
-		System.out.println();
+		System.out.println("Creatures:");
 		Array<Creature> creatures = new Array<>(3);
 		creatures.add(new Creature("landCreature"));
 		addMammal(creatures);
@@ -51,22 +51,27 @@ public class App {
 			System.out.println(creatures.get(i));
 		}
 		
-		System.out.println();
+		System.out.println("Mammals2:");
 		Array<Mammal> mammals2 = new Array<>(3);
 		Util.copy(mammals, mammals2);
 		feedAll(mammals2);
 		
-		System.out.println();
+		System.out.println("Creatures2:");
 		Array<Creature> creatures2 = new Array<>(3);
 		Util.copy(mammals, creatures2);
 		for (int i = 0; i < creatures2.size(); i++) {
 			System.out.println(creatures2.get(i));
 		}
 		
-		System.out.println();
+		System.out.println("Mammals3:");
 		Array<Mammal> mammals3 = new Array<>(3);
 		Util.copy(cats, mammals3);
 		feedAll(mammals3);
+		
+		System.out.println("Mammals4:");
+		Array<Mammal> mammals4 = new Array<>(3);
+		mammals4.addAll(mammals3);
+		feedAll(mammals4);
 		
 	}
 	

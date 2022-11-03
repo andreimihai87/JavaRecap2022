@@ -42,9 +42,21 @@ public class Array<E> {
 
 		return sb.toString();
 	}
-	
+
 	public int size() {
 		return position;
+	}
+
+	public void addAll(Array<? extends E> source) {
+
+		if (size() <= source.size()) {
+			for (int i = 0; i < source.size(); i++) {
+				add(source.get(i));
+			}
+		} else {
+			throw new ArrayStoreException();
+		}
+
 	}
 
 }
