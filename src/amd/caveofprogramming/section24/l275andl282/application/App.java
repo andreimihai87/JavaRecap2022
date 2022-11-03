@@ -1,9 +1,9 @@
-package amd.caveofprogramming.section24.l275andl280.application;
+package amd.caveofprogramming.section24.l275andl282.application;
 
-import amd.caveofprogramming.section24.l275andl280.collections.Array;
-import amd.caveofprogramming.section24.l275andl280.hierarchy.Cat;
-import amd.caveofprogramming.section24.l275andl280.hierarchy.Creature;
-import amd.caveofprogramming.section24.l275andl280.hierarchy.Mammal;
+import amd.caveofprogramming.section24.l275andl282.collections.Array;
+import amd.caveofprogramming.section24.l275andl282.hierarchy.Cat;
+import amd.caveofprogramming.section24.l275andl282.hierarchy.Creature;
+import amd.caveofprogramming.section24.l275andl282.hierarchy.Mammal;
 
 public class App {
 
