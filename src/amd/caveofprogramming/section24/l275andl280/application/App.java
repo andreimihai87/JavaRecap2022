@@ -44,8 +44,15 @@ public class App {
 		System.out.println();
 		Array<Creature> creatures = new Array<>(3);
 		creatures.add(new Creature("landCreature"));
+		addMammal(creatures);
+		
+		for (int i = 0; i < creatures.size(); i++) {
+			System.out.println(creatures.get(i));
+		}
 		
 	}
+	
+	// PECS - Producer extends, Consumer super
 
 	private static <T> T find(Array<T> array, String text) {
 
@@ -68,7 +75,7 @@ public class App {
 
 	}
 	
-	private static void addMammal(Array<Mammal> mammals) {
+	private static void addMammal(Array<? super Mammal> mammals) {
 		
 		mammals.add(new Mammal("giraffe"));
 		
