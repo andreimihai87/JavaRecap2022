@@ -1,7 +1,7 @@
-package amd.caveofprogramming.section24.l275.application;
+package amd.caveofprogramming.section24.l275andl280.application;
 
-import amd.caveofprogramming.section24.l275.collections.Pair;
-import amd.caveofprogramming.section24.l275.hierarchy.Cat;
+import amd.caveofprogramming.section24.l275andl280.collections.Pair;
+import amd.caveofprogramming.section24.l275andl280.hierarchy.Cat;
 
 public class App {
 

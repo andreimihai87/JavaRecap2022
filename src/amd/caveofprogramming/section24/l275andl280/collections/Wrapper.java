@@ -1,4 +1,4 @@
-package amd.caveofprogramming.section24.l275.collections;
+package amd.caveofprogramming.section24.l275andl280.collections;
 
 public class Wrapper<E> {
 	
