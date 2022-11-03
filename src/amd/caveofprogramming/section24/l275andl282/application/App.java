@@ -1,6 +1,7 @@
 package amd.caveofprogramming.section24.l275andl282.application;
 
 import amd.caveofprogramming.section24.l275andl282.collections.Array;
+import amd.caveofprogramming.section24.l275andl282.collections.Util;
 import amd.caveofprogramming.section24.l275andl282.hierarchy.Cat;
 import amd.caveofprogramming.section24.l275andl282.hierarchy.Creature;
 import amd.caveofprogramming.section24.l275andl282.hierarchy.Mammal;
@@ -49,6 +50,23 @@ public class App {
 		for (int i = 0; i < creatures.size(); i++) {
 			System.out.println(creatures.get(i));
 		}
+		
+		System.out.println();
+		Array<Mammal> mammals2 = new Array<>(3);
+		Util.copy(mammals, mammals2);
+		feedAll(mammals2);
+		
+		System.out.println();
+		Array<Creature> creatures2 = new Array<>(3);
+		Util.copy(mammals, creatures2);
+		for (int i = 0; i < creatures2.size(); i++) {
+			System.out.println(creatures2.get(i));
+		}
+		
+		System.out.println();
+		Array<Mammal> mammals3 = new Array<>(3);
+		Util.copy(cats, mammals3);
+		feedAll(mammals3);
 		
 	}
 	
