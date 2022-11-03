@@ -24,6 +24,18 @@ public class App {
 		
 		Cat cat2 = (Cat) find(myArray, "Tomisor");
 		System.out.println(cat2);
+		
+		System.out.println();
+		Array<Mammal> mammals = new Array<>(2);
+		mammals.add(new Mammal("dolphin"));
+		mammals.add(new Mammal("sheep"));
+		feedAll(mammals);
+		
+		System.out.println();
+		Array<Cat> cats = new Array<>(2);
+		cats.add(new Cat("Tom"));
+		cats.add(new Cat("Tid"));
+		feedAll(cats);
 
 	}
 
@@ -37,6 +49,15 @@ public class App {
 		}
 
 		return null;
+	}
+	
+	public static void feedAll(Array<? extends Mammal> mammals) {
+		
+		for(int i = 0; i < mammals.getSize(); i++) {
+			Mammal mammal = mammals.get(i);
+			mammal.feed();
+		}
+		
 	}
 
 }
