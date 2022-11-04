@@ -1,16 +1,25 @@
-package amd.caveofprogramming.section25.l287tol289;
+package amd.caveofprogramming.section25.l287tol290;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 class Person implements Comparable<Person> {
 
 	private String name;
-	private int age;
+	private Integer age;
 
 	public Person(String name, int age) {
 		this.name = name;
 		this.age = age;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public int getAge() {
+		return age;
 	}
 
 	@Override
@@ -23,15 +32,21 @@ class Person implements Comparable<Person> {
 		String thisStr = this.name;
 		String otherStr = o.name;
 
-		Integer thisAge = age;
-		Integer otherAge = o.age;
-
 		if (thisStr.equals(otherStr)) {
-			return thisAge.compareTo(otherAge);
+			return age.compareTo(o.age);
 		}
 
 		return thisStr.compareTo(otherStr);
 	}
+}
+
+class PersonReverseAlpha implements Comparator<Person> {
+
+	@Override
+	public int compare(Person person1, Person person2) {
+		return person2.getName().compareTo(person1.getName());
+	}
+
 }
 
 public class App {
@@ -45,33 +60,26 @@ public class App {
 		personsList.add(new Person("Vio", 30));
 		personsList.add(new Person("Vio", 27));
 		personsList.add(new Person("Costel", 40));
-
-		personsList.set(1, new Person("Estelle", 65));
-
+		personsList.add(new Person("Estelle", 65));
 		personsList.add(new Person("Estelle", 23));
 		personsList.add(new Person("Estelle", 19));
 		personsList.add(new Person("Estelle", 36));
 		personsList.add(new Person("Estelle", 18));
 
-		Collections.sort(personsList);
+		Collections.sort(personsList, new PersonReverseAlpha());
 
 		personsList.forEach(System.out::println);
 
 		System.out.println();
 
-		String name1 = "abc";
-		String name2 = "efg";
-		String name3 = "efg";
-
-		int comparison = name1.compareTo(name2);
-		System.out.println(comparison);
-
-		comparison = name2.compareTo(name1);
-		System.out.println(comparison);
-
-		System.out.println(name2.equals(name3));
-		comparison = name2.compareTo(name3);
-		System.out.println(comparison);
+		personsList.sort(new Comparator<Person>() {
+			@Override
+			public int compare(Person person1, Person person2) {
+				return Integer.valueOf(person1.getAge()).compareTo(person2.getAge());
+			}
+		});
+		
+		personsList.forEach(System.out::println);
 
 	}
 
