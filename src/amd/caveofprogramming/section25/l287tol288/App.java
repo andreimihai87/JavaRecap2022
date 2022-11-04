@@ -1,4 +1,4 @@
-package amd.caveofprogramming.section25.l287;
+package amd.caveofprogramming.section25.l287tol288;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -40,6 +40,22 @@ public class App {
 		Collections.sort(personsList);
 		
 		personsList.forEach(System.out::println);
+		
+		System.out.println();
+		
+		String name1 = "abc";
+		String name2 = "efg";
+		String name3 = "efg";
+		
+		int comparison = name1.compareTo(name2);
+		System.out.println(comparison);
+		
+		comparison = name2.compareTo(name1);
+		System.out.println(comparison);
+		
+		System.out.println(name2.equals(name3));
+		comparison = name2.compareTo(name3);
+		System.out.println(comparison);
 		
 	}
 
