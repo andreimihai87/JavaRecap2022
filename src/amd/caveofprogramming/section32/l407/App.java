@@ -11,7 +11,7 @@ public class App {
     }
 
     private static String toBinary(int value) {
-        return String.format("%8s", Integer.toBinaryString(value).replace(" ", "0"));
+        return String.format("%8s", Integer.toBinaryString(value)).replace(" ", "0");
     }
 
 }
