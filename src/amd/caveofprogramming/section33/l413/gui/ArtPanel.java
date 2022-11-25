@@ -12,7 +12,7 @@ public class ArtPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
     private static final int ON_COLOR = 0x00FF00;
-    private static final int OFF_COLOR = 0x0000FF;
+    private static final int OFF_COLOR = 0x006400;
     private BufferedImage image;
     private Rule rule;
     private Random random = new Random();
@@ -36,6 +36,25 @@ public class ArtPanel extends JPanel {
             image.setRGB(x, 0, on ? ON_COLOR : OFF_COLOR);
             if (random.nextInt(20) == 0) {
                 on = !on;
+            }
+        }
+
+        for (int y = 1; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                int xLeft = x == 0 ? width - 1 : x - 1;
+                int xRight = x == width - 1 ? 0 : x + 1;
+
+                int leftColor = image.getRGB(xLeft, y - 1) & 0xFFFFFF;
+                int aboveColor = image.getRGB(x, y - 1) & 0xFFFFFF;
+                int rightColor = image.getRGB(xRight, y - 1) & 0xFFFFFF;
+
+                String numberStr = "";
+                numberStr += leftColor == ON_COLOR ? "1" : "0";
+                numberStr += aboveColor == ON_COLOR ? "1" : "0";
+                numberStr += rightColor == ON_COLOR ? "1" : "0";
+
+                int value = rule.get(Integer.valueOf(numberStr));
+                image.setRGB(x, y, value == 1 ? ON_COLOR : OFF_COLOR);
             }
         }
 
