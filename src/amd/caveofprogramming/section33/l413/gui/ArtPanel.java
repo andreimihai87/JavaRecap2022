@@ -48,12 +48,13 @@ public class ArtPanel extends JPanel {
                 int aboveColor = image.getRGB(x, y - 1) & 0xFFFFFF;
                 int rightColor = image.getRGB(xRight, y - 1) & 0xFFFFFF;
 
-                String numberStr = "";
-                numberStr += leftColor == ON_COLOR ? "1" : "0";
-                numberStr += aboveColor == ON_COLOR ? "1" : "0";
-                numberStr += rightColor == ON_COLOR ? "1" : "0";
+                int left = leftColor == ON_COLOR ? 1 : 0;
+                int center = aboveColor == ON_COLOR ? 1 : 0;
+                int right = rightColor == ON_COLOR ? 1 : 0;
 
-                int value = rule.get(Integer.valueOf(numberStr));
+                int pixelOn = (left << 2) | (center << 1) | right;
+
+                int value = rule.get(pixelOn);
                 image.setRGB(x, y, value == 1 ? ON_COLOR : OFF_COLOR);
             }
         }
