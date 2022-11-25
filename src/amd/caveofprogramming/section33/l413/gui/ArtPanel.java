@@ -21,10 +21,16 @@ public class ArtPanel extends JPanel {
         int height = getHeight();
 
         if (image == null || image.getWidth() != width || image.getHeight() != height) {
-            image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+            image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         }
 
-        g.drawImage(image, width, height, null);
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                image.setRGB(x, y, 0xffa500);
+            }
+        }
+
+        g.drawImage(image, 0, 0, null);
 
     }
 
