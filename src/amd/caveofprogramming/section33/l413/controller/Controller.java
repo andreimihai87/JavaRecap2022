@@ -9,7 +9,7 @@ public class Controller {
     private MainFrame mainFrame;
 
     public Controller() {
-        artPanel = new ArtPanel();
+        artPanel = new ArtPanel(new Rule(22));
         mainFrame = new MainFrame();
 
         mainFrame.setContentPane(artPanel);
